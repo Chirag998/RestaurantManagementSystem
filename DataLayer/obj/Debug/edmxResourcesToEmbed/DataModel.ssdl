@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RestaurantManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TId" Type="int" />
+    <Property Name="CustomerName" Type="nvarchar(max)" />
+    <Property Name="BookingDate" Type="date" />
+    <Property Name="STime" Type="time" Precision="7" />
+    <Property Name="Etime" Type="time" Precision="7" />
+    <Property Name="NumbOfSeats" Type="int" />
+  </EntityType>
+  <EntityType Name="RestaurantTables">
+    <Key>
+      <PropertyRef Name="TId" />
+    </Key>
+    <Property Name="TId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TName" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__Booking__TId__1273C1CD">
+    <End Role="RestaurantTables" Type="Self.RestaurantTables" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RestaurantTables">
+        <PropertyRef Name="TId" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="TId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RestaurantManagementModelStoreContainer">
+    <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RestaurantTables" EntityType="Self.RestaurantTables" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Booking__TId__1273C1CD" Association="Self.FK__Booking__TId__1273C1CD">
+      <End Role="RestaurantTables" EntitySet="RestaurantTables" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

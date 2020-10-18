@@ -1,0 +1,79 @@
+﻿@using ViewModels;
+@model TableViewModel
+@{
+
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .Mytextarea {
+        width: 300px;
+    }
+</style>
+<fieldset>
+    @using (Html.BeginForm("Index", "Restaurant", FormMethod.Post))
+    {
+        <h4>Table Reservation Form</h4>
+        <hr />
+        <div class="row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.CustomerName)
+                @Html.TextBoxFor(model => model.CustomerName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CustomerName)
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.seats)
+                @Html.TextBoxFor(model => model.seats, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.seats)
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Date)
+                @Html.TextBoxFor(model => model.Date, new { @class = "form-control datepicker" })
+                @Html.ValidationMessageFor(model => model.Date)
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.tableDropdown)
+                @Html.DropDownListFor(model => model.tableDropdown, ViewBag.data as SelectList, "--Select Table--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.tableDropdown)
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Stime)
+                @Html.TextBoxFor(model => model.Stime, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Stime)
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.ETime)
+                @Html.TextBoxFor(model => model.ETime, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ETime)
+            </div>
+        </div>
+        
+  
+        <div class="form-group">
+            <input type="submit" value="Book Now" class="btn btn-success" />
+        </div>
+    }
+
+</fieldset>
+
+@if (ViewBag.message != null)
+{
+  <span style="color:red">@ViewBag.message</span>
+}
+
+@section scripts
+{
+<script type="text/javascript">
+    $(function () { // will trigger when the document is ready
+        $('.datepicker').datepicker(); //Initialise any date pickers
+    });
+</script>
+}
+
+
+

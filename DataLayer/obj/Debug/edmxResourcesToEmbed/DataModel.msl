@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RestaurantManagementModelStoreContainer" CdmEntityContainer="RestaurantEntities">
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="RestaurantManagementModel.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TId" ColumnName="TId" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="STime" ColumnName="STime" />
+          <ScalarProperty Name="Etime" ColumnName="Etime" />
+          <ScalarProperty Name="NumbOfSeats" ColumnName="NumbOfSeats" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RestaurantTables">
+      <EntityTypeMapping TypeName="RestaurantManagementModel.RestaurantTable">
+        <MappingFragment StoreEntitySet="RestaurantTables">
+          <ScalarProperty Name="TId" ColumnName="TId" />
+          <ScalarProperty Name="TName" ColumnName="TName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

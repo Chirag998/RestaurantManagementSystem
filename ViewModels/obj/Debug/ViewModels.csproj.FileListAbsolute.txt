@@ -1,0 +1,6 @@
+E:\.Net Projects\Restaurant Management System\ViewModels\bin\Debug\ViewModels.dll
+E:\.Net Projects\Restaurant Management System\ViewModels\bin\Debug\ViewModels.pdb
+E:\.Net Projects\Restaurant Management System\ViewModels\obj\Debug\ViewModels.csprojAssemblyReference.cache
+E:\.Net Projects\Restaurant Management System\ViewModels\obj\Debug\ViewModels.csproj.CoreCompileInputs.cache
+E:\.Net Projects\Restaurant Management System\ViewModels\obj\Debug\ViewModels.dll
+E:\.Net Projects\Restaurant Management System\ViewModels\obj\Debug\ViewModels.pdb

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RestaurantManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TId" Type="Int32" />
+    <Property Name="CustomerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BookingDate" Type="DateTime" Precision="0" />
+    <Property Name="STime" Type="Time" Precision="7" />
+    <Property Name="Etime" Type="Time" Precision="7" />
+    <Property Name="NumbOfSeats" Type="Int32" />
+    <NavigationProperty Name="RestaurantTable" Relationship="Self.FK__Booking__TId__1273C1CD" FromRole="Booking" ToRole="RestaurantTables" />
+  </EntityType>
+  <EntityType Name="RestaurantTable">
+    <Key>
+      <PropertyRef Name="TId" />
+    </Key>
+    <Property Name="TId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK__Booking__TId__1273C1CD" FromRole="RestaurantTables" ToRole="Booking" />
+  </EntityType>
+  <Association Name="FK__Booking__TId__1273C1CD">
+    <End Role="RestaurantTables" Type="Self.RestaurantTable" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RestaurantTables">
+        <PropertyRef Name="TId" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="TId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RestaurantEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bookings" EntityType="Self.Booking" />
+    <EntitySet Name="RestaurantTables" EntityType="Self.RestaurantTable" />
+    <AssociationSet Name="FK__Booking__TId__1273C1CD" Association="Self.FK__Booking__TId__1273C1CD">
+      <End Role="RestaurantTables" EntitySet="RestaurantTables" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
